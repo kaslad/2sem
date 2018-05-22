@@ -17,7 +17,7 @@ import ru.kpfu.itis.app.services.AuthenticationService;
 import java.util.Optional;
 
 @Component
-public class ClientEditFormValidator implements Validator {
+public class UserEditFormValidator implements Validator {
 
     @Autowired
     private AuthenticationService authenticationService;
@@ -49,10 +49,8 @@ public class ClientEditFormValidator implements Validator {
             }
         }
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "empty.login", "Пустой логин");
-//        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "newPassword", "empty.new_password", "Пустой пароль");
-//        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "newPassword2", "empty.new_password", "Пустой пароль");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "empty.email", "Пустой email");
-        if (!form.getNewPassword().equals(form.getNewPassword2())) {
+        if (!form.getPassword1().equals(form.getPassword2())) {
             errors.reject("bad.password", "Пароли не совпадают");
         }
     }
