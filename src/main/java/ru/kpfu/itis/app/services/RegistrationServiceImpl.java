@@ -9,19 +9,19 @@ import ru.kpfu.itis.app.model.User;
 import ru.kpfu.itis.app.repositories.UsersRepository;
 import ru.kpfu.itis.app.security.role.Role;
 
-
-/**
- * 10.11.2017
- * RegistrationServiceImpl
- *
- * @author Sidikov Marsel (First Software Engineering Platform)
- * @version v1.0
- */
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
 
     @Autowired
+    private ClientService clientService;
+
+    @Autowired
     private UsersRepository usersRepository;
+
+    @Autowired
+    private StringerService stringerService;
+    @Autowired
+    private CoachService coachService;
 
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -30,14 +30,22 @@ public class RegistrationServiceImpl implements RegistrationService {
         // создаем нового пользователя для БД с ролью USER
         User newUser = User.builder()
                 .login(userForm.getLogin())
-                .email(userForm.getEmail())
+                .email(userForm .getEmail())
                 .hashPassword(passwordEncoder.encode(userForm.getPassword()))
-                .role(Role.fromString(userForm.getRole()))
+                .role(Role.fromString("COACH"))
                 .build();
         usersRepository.save(newUser);
         if (newUser.getRole() == Role.CLIENT) {
             newUser = usersRepository.findOneByLogin(newUser.getLogin()).get();
-            participantService.register(newUser);
+            clientService.register(newUser);
+        }
+        if (newUser.getRole() == Role.STRINGER){
+            newUser = usersRepository.findOneByLogin(newUser.getLogin()).get();
+            stringerService.register(newUser);
+        }
+        if (newUser.getRole() == Role.COACH) {
+            newUser = usersRepository.findOneByLogin(newUser.getLogin()).get();
+            coachService.register(newUser);
         }
         // сохраняем пользователя
         usersRepository.save(newUser);

@@ -1,7 +1,7 @@
 package ru.kpfu.itis.app.security.role;
 
 public enum Role {
-    ADMIN("ADMIN"), MANAGER("MANAGER"), CLIENT("CLIENT"), STRINGER("STRINGER"), COACH("COACH");
+    ADMIN("ADMIN"), USER("USER"), MANAGER("MANAGER"), CLIENT("CLIENT"), STRINGER("STRINGER"), COACH("COACH");
 
     private String text;
 

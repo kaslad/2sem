@@ -16,7 +16,7 @@ public interface UsersRepository extends JpaRepository<User, Long> {
     //Optional<User> findOneBySinceGreaterThanAndUntilLessThan(Long since, Long until);
 
     //Optional<User> findOneByPhone(String phone);
-    //Optional<User> findOnyByEmail(String email);
+    Optional<User> findOneByEmail(String email);
     List<User> findAllByRole(Role role);
 
     Optional<User> findById(Long userId);

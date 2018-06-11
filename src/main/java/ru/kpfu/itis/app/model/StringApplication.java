@@ -1,10 +1,12 @@
 package ru.kpfu.itis.app.model;
 
+
 import lombok.*;
 import ru.kpfu.itis.app.model.enums.RacquetString;
-import ru.kpfu.itis.app.model.enums.State;
+import ru.kpfu.itis.app.model.enums.StringApplicationState;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Getter
@@ -26,18 +28,22 @@ public class StringApplication {
     private Client client;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "stringer_id", nullable = false)
+    @JoinColumn(name = "stringer_id")
     private Stringer stringer;
 
-    private Short HorizontalWeight;
-    private Short VerticalWeight;
+    @NotNull
+    private Short horizontalWeight;
+    @NotNull
+    private Short verticalWeight;
+    @NotNull
+    private String name;
 
 
     @Enumerated(EnumType.STRING)
     private RacquetString racquetString;
 
     @Enumerated(EnumType.STRING)
-    private State state;
+    private StringApplicationState state;
 
     private Timestamp timeStart;
     private Timestamp timeFinish;

@@ -7,8 +7,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import ru.kpfu.itis.app.forms.UserRegistrationForm;
-import ru.kpfu.itis.app.model.UserData;
-import ru.kpfu.itis.app.repositories.UserDataRepository;
+import ru.kpfu.itis.app.model.User;
+import ru.kpfu.itis.app.repositories.UsersRepository;
 
 import java.util.Optional;
 
@@ -16,7 +16,7 @@ import java.util.Optional;
 public class UserRegistrationFormValidator implements Validator {
 
     @Autowired
-    private UserDataRepository usersRepository;
+    private UsersRepository usersRepository;
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -28,14 +28,13 @@ public class UserRegistrationFormValidator implements Validator {
     public void validate(Object target, Errors errors) {
         UserRegistrationForm form = (UserRegistrationForm) target;
 
-        Optional<UserData> existedUser = usersRepository.findOneByLogin(form.getLogin());
+        Optional<User> existedUser = usersRepository.findOneByLogin(form.getLogin());
 
         if (existedUser.isPresent()) {
             errors.reject("bad.login", "Логин занят");
         }
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "empty.login", "Пустой логин");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "empty.password", "Пустой пароль");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "role", "empty.role", "Выберите роль");
 
     }
 

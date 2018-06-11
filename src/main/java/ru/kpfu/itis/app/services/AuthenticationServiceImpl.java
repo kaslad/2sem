@@ -18,6 +18,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         UserDetailsImpl currentUserDetails = (UserDetailsImpl)authentication.getPrincipal();
         User currentUserModel = currentUserDetails.getUser();
         Long currentUserId = currentUserModel.getId();
+        System.out.println(currentUserId);
         return usersRepository.findOne(currentUserId);
     }
 }

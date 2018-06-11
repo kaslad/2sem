@@ -38,6 +38,7 @@ public class User {
 
     private String hashPassword;
 
+    private String photo;
 
 
     // Role, only one not null

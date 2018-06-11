@@ -12,8 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import ru.kpfu.itis.app.model.UserData;
-import ru.kpfu.itis.app.repositories.UserDataRepository;
+import ru.kpfu.itis.app.model.User;
+import ru.kpfu.itis.app.repositories.UsersRepository;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -22,7 +22,7 @@ import java.util.Optional;
 public class AuthProvider implements AuthenticationProvider {
 
     @Autowired
-    UserDataRepository userDatasRepository;
+    UsersRepository usersRepository;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -35,12 +35,12 @@ public class AuthProvider implements AuthenticationProvider {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        Optional<UserData> userOptional = userDatasRepository.findOneByLogin(username);
+        Optional<User> userOptional = usersRepository.findOneByLogin(username);
 		
 		//check
         if (userOptional.isPresent()) {
 
-            UserData user = userOptional.get();
+            User user = userOptional.get();
 
             if (!passwordEncoder.matches(password, user.getHashPassword())) {
 

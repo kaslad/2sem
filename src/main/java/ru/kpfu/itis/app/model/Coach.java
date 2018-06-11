@@ -24,6 +24,10 @@ public class Coach {
     private CoachDegree coachDegree;
     // per hour price
     private Integer price;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
 
 
 
