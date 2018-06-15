@@ -4,26 +4,10 @@
     <div class="main-content-inner">
         <div class="breadcrumbs ace-save-state" id="breadcrumbs">
             <ul class="breadcrumb">
-                <li>
-                    <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Home</a>
-                </li>
-
-                <li>
-                    <a href="#">More Pages</a>
-                </li>
                 <li class="active">User Profile</li>
             </ul><!-- /.breadcrumb -->
 
-            <div class="nav-search" id="nav-search">
-                <form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input"
-                                           id="nav-search-input" autocomplete="off"/>
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-                </form>
-            </div><!-- /.nav-search -->
+
         </div>
 
         <div class="page-content">
@@ -155,12 +139,7 @@
                                             </a>
                                         </li>
 
-                                        <li>
-                                            <a data-toggle="tab" href="#edit-settings">
-                                                <i class="purple ace-icon fa fa-cog bigger-125"></i>
-                                                Settings
-                                            </a>
-                                        </li>
+
 
                                         <li>
                                             <a data-toggle="tab" href="#edit-password">
@@ -365,7 +344,7 @@
 <script type="text/javascript">
     if ('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
 
 <!-- page specific plugin scripts -->
 

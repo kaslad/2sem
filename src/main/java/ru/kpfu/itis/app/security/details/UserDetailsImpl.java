@@ -9,12 +9,7 @@ import ru.kpfu.itis.app.model.User;
 import java.util.Collection;
 import java.util.Collections;
 
-/**
- * 05.08.2017
- *
- * @author Marsel Sidikov (First Software Engineering Platform)
- * @version 1.0
- */
+
 // класс, который помогает спрингу понять, как устроена ваша сущность для авторизации
 public class UserDetailsImpl implements UserDetails {
 

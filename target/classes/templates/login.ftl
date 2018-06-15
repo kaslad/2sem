@@ -58,7 +58,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a href="#"><i class="fa fa-rss"></i></a></li>
                 </ul>
             </div>
-            <p><a href="#" data-toggle="modal" data-target="#myModal3"> Don't have an account?</a></p>
+            <p><a href="/signup" data-toggle="modal" data-target="#myModal3"> Don't have an account?</a></p>
         </div>
     </div>
 </div>

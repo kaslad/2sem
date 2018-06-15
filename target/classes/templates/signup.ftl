@@ -29,10 +29,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </head>
 <body>
+
 <div class="modal-content">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-
+    <#if error??>
+        <div class="alert alert-info">
+            <strong>${error}</strong>
+            <br>
+        </div>
+    </#if>
         <div class="signin-form profile">
             <h3 class="agileinfo_sign">Sign Up</h3>
             <div class="login-form">

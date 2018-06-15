@@ -78,8 +78,7 @@
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <img class="nav-user-photo" src="/assets/images/avatars/user.jpg" alt="Jason's Photo"/>
                         <span class="user-info">
-									<small>Welcome,</small>
-									Jason
+									<small>Welcome</small>
 								</span>
 
                         <i class="ace-icon fa fa-caret-down"></i>
@@ -151,9 +150,17 @@
                 <ul class="submenu">
 
                     <li class="">
-                        <a href="/coach/all_questions">
+                        <a href="/coach/new_questions">
                             <i class="menu-icon fa fa-caret-right"></i>
-                            All
+                            New
+                        </a>
+
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a href="/coach/answered_questions">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Answered
                         </a>
 
                         <b class="arrow"></b>
@@ -178,7 +185,7 @@
             </li>
 
             <li class="">
-                <a href="gallery.html">
+                <a href="/gallery">
                     <i class="menu-icon fa fa-picture-o"></i>
                     <span class="menu-text"> Gallery </span>
                 </a>

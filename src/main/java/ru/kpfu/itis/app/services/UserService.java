@@ -13,6 +13,11 @@ public interface UserService {
     User getById(Long id);
     void delete(Long id);
 
+    User findOneByEmail(String email);
+
+    List<User> findAllByNameContaining(String name);
+
+
     void updateInfo(UserEditForm userEditForm, User user);
 
     Optional<User> findOneByLogin(String login);

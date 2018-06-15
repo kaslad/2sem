@@ -78,8 +78,8 @@
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <img class="nav-user-photo" src="/assets/images/avatars/user.jpg" alt="Jason's Photo"/>
                         <span class="user-info">
-									<small>Welcome,</small>
-									Jason
+									<small>Welcome</small>
+
 								</span>
 
                         <i class="ace-icon fa fa-caret-down"></i>
@@ -198,6 +198,21 @@
                     </li>
                 </ul>
             </li>
+            <li class="">
+                <a href="/search">
+                    <i class="menu-icon fa fa-search"></i>
+
+                    <span class="menu-text">
+								Search
+
+								<span class="badge badge-transparent tooltip-info" >
+									<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
+								</span>
+							</span>
+                </a>
+
+                <b class="arrow"></b>
+            </li>
 
             <li class="">
                 <a href="calendar.html">
@@ -216,7 +231,7 @@
             </li>
 
             <li class="">
-                <a href="gallery.html">
+                <a href="/gallery">
                     <i class="menu-icon fa fa-picture-o"></i>
                     <span class="menu-text"> Gallery </span>
                 </a>

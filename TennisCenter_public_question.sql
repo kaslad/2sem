@@ -1,0 +1,5 @@
+INSERT INTO public.question (id, answer, answered, content, date, client_id, coach_id) VALUES (1, null, false, 'Как мне перейти с континентальной хватки на универсальную?', '2018-06-13 08:17:56.632000', 1, null);
+INSERT INTO public.question (id, answer, answered, content, date, client_id, coach_id) VALUES (4, 'MY ANSWER', true, 'My question', '2018-06-13 08:25:42.057000', 1, 4);
+INSERT INTO public.question (id, answer, answered, content, date, client_id, coach_id) VALUES (2, 'babolat racquet is the best for amateurs', true, 'What racquet to buy?', '2018-06-13 08:20:04.032000', 1, 4);
+INSERT INTO public.question (id, answer, answered, content, date, client_id, coach_id) VALUES (3, 'Me', true, 'What coach you prefer for 12 y/o tennis player with bad serve?', '2018-06-13 08:22:12.104000', 1, 4);
+INSERT INTO public.question (id, answer, answered, content, date, client_id, coach_id) VALUES (5, 'privet', true, 'new question', '2018-06-13 09:12:40.028000', 1, 4);

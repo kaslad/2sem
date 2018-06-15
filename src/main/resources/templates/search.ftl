@@ -246,14 +246,7 @@
                                                     <#if model??>
                                                     <#if model.result??>
                                                     <#list model.result as list >
-
-                                                    <div class="media search-media">
-                                                        <div class="media-left">
-                                                            <a href="#">
-                                                                <img class="media-object" data-src="holder.js/72x72"/>
-                                                            </a>
-                                                        </div>
-
+                                                        <div class="media search-media">
                                                         <div class="media-body">
                                                             <div>
                                                                 <h4 class="media-heading">
@@ -338,5 +331,7 @@
         <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
     </a>
 </div><!-- /.main-container -->
+<!-- Start SiteHeart code -->
 
+<!-- End SiteHeart code -->
  <#include "bottom.ftl">

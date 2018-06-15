@@ -8,12 +8,7 @@ import org.springframework.stereotype.Service;
 import ru.kpfu.itis.app.model.User;
 import ru.kpfu.itis.app.repositories.UsersRepository;
 
-/**
- * 05.08.2017
- *
- * @author Marsel Sidikov (First Software Engineering Platform)
- * @version 1.0
- */
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 

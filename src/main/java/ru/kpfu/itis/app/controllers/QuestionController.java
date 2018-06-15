@@ -4,11 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import ru.kpfu.itis.app.model.Coach;
 import ru.kpfu.itis.app.model.Question;
 import ru.kpfu.itis.app.services.*;
 
@@ -39,10 +37,10 @@ public class QuestionController {
 
         model.addAttribute("client", clientService.getDataByUser(authenticationService.getUserByAuthentication(authentication)).get());
 
-        return "question";
+        return "ask_question";
     }
 
-    @PostMapping("/client/ask_question")
+    @RequestMapping(value = "/client/question", method = RequestMethod.POST)
     public String askQuestion(@ModelAttribute("model") ModelMap model,
                               @RequestParam String content,
                               RedirectAttributes attributes,
@@ -52,11 +50,34 @@ public class QuestionController {
                 service.addQuestion(content, clientService.getDataByUser(authenticationService.getUserByAuthentication(authentication)).get());
 
         attributes.addAttribute("id", question.getId());
-        return "redirect:/client/concrete_question";
+        return "redirect:/client/all_questions";
+    }
+
+    @GetMapping("/coach/new_questions")
+    public String getNewQuestions(@ModelAttribute("model") ModelMap model,
+                                  Authentication authentication) {
+        model.addAttribute("coach", coachService.getDataByUser(authenticationService.getUserByAuthentication(authentication)).get());
+
+        model.addAttribute("questions", service.findAll()
+                .stream()
+                .filter((q) -> q.getAnswer() == null)
+                .collect(Collectors.toList())
+        );
+        return "coach_new_questions";
+    }
+
+    @GetMapping("/coach/answered_questions")
+    public String getAnsweredQuestions(@ModelAttribute("model") ModelMap model,
+                                  Authentication authentication) {
+        Coach coach = coachService.getDataByUser(authenticationService.getUserByAuthentication(authentication)).get();
+        model.addAttribute("coach", coach);
+
+        model.addAttribute("questions", service.findAllByCoach(coach));
+        return "coach_answered_questions";
     }
 
 
-    @PostMapping("/coach/answer")
+    @RequestMapping(value = "/coach/new_questions", method = RequestMethod.POST)
     public String answer(@ModelAttribute("model") ModelMap model,
                          @RequestParam String answer,
                          @RequestParam Long id,
@@ -66,8 +87,8 @@ public class QuestionController {
         if (!opt.isPresent()) return "redirect:/";
         Question question = opt.get();
         question = service.answer(question, answer, coachService.getDataByUser(authenticationService.getUserByAuthentication(authentication)).get());
-        attributes.addAttribute("id", id);
-        return "redirect:/coach/concrete_question";
+
+        return "redirect:/coach/answered_questions";
     }
 
     @GetMapping("/client/concrete_question")
@@ -113,16 +134,5 @@ public class QuestionController {
 
 
 
-    @GetMapping("/coach/all_questions")
-    public String getAllQuestions(@ModelAttribute("model") ModelMap model,
-                                  Authentication authentication) {
-        model.addAttribute("coach", coachService.getDataByUser(authenticationService.getUserByAuthentication(authentication)).get());
 
-        model.addAttribute("questions", service.findAll()
-                .stream()
-                .filter((q) -> q.getAnswer() == null)
-                .collect(Collectors.toList())
-        );
-        return "client_all_questions";
-    }
 }

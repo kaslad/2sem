@@ -79,7 +79,6 @@
                         <img class="nav-user-photo" src="/assets/images/avatars/user.jpg" alt="Jason's Photo"/>
                         <span class="user-info">
 									<small>Welcome,</small>
-									Jason
 								</span>
 
                         <i class="ace-icon fa fa-caret-down"></i>
@@ -148,7 +147,7 @@
 
                 <ul class="submenu">
                     <li class="">
-                        <a href="/coach/applications">
+                        <a href="/stringer/applications/">
                             <i class="menu-icon fa fa-caret-right"></i>
                             All
                         </a>
@@ -175,7 +174,7 @@
             </li>
 
             <li class="">
-                <a href="gallery.html">
+                <a href="/gallery">
                     <i class="menu-icon fa fa-picture-o"></i>
                     <span class="menu-text"> Gallery </span>
                 </a>

@@ -41,6 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/client/**").hasAnyAuthority("CLIENT")
                 .antMatchers("/coach/**").hasAnyAuthority("COACH")
                 .antMatchers("/manager/**").hasAnyAuthority("MANAGER")
+                .antMatchers("/search/**").hasAnyAuthority("CLIENT")
+
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/css/*").permitAll()
                 .antMatchers("/js/*").permitAll()
@@ -49,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().loginPage("/login")
                 .usernameParameter("login")
-                .defaultSuccessUrl("/main")
+                .defaultSuccessUrl("/")
                 .failureUrl("/login?error")
                 .permitAll()
                 .and()

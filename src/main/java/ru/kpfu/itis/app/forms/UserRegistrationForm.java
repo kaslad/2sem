@@ -13,6 +13,7 @@ import lombok.Setter;
 public class UserRegistrationForm {
     private String login;
     private String password;
+    private String password2;
     private String email;
     private String key;
 }

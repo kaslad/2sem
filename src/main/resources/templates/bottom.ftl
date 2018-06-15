@@ -143,41 +143,108 @@
     });
 
     function updateTextInput(val) {
-        document.getElementById('range-value').value = val;
+        document.getElementById('range-value1').value = val;
+    }
+
+    function updateTextInput1(val) {
+        document.getElementById('range-value2').value = val;
     }
 
 
     document.getElementById('button-update').onclick = function () {
-        alert(55);
         var playerDegreeSelections = [];
         $('#categorySelector option').each(function (i) {
             if (this.selected == true) {
                 playerDegreeSelections.push(this.value);
             }
         });
-        var cost1 = $('#costSelector').val();
-        alert(cost1);
+        var cost1 = $('#costSelector1').val();
+        var cost2 = $('#costSelector2').val();
 
 
         $.ajax({
                     dataType: "json",
+                    method: "GET",
                     data: {
-                        "cost": cost1,
-                        "categories": playerDegreeSelections
+                        "cost1": cost1,
+                        "cost2": cost2
                     },
                     /*url: "/search", */
-                    url: $(this).attr('action'),
-                    error: function () {
-                        alert(44)
-                    },
-                    success: function (r) {
-                        alert(555)
+                    url: "/search/ajax",
+
+                    success: function (data) {
+                        document.getElementById('search-results').innerHTML = "";
+                        for (i = 0; i < data.result.length; i++) {
+
+                            coachName = data.result[i].snd.name;
+                            coachDegree = data.result[i].fst.coachDegree;
+                            playerDegree = data.result[i].fst.playerDegree;
+                            document.getElementById('search-results').innerHTML += " <div class=\"media search-media\">\n" +
+                                    "                                                        <div class=\"media-left\">\n" +
+                                    "                                                            <a href=\"#\">\n" +
+                                    "                                                                <img class=\"media-object\" data-src=\"holder.js/72x72\"/>\n" +
+                                    "                                                            </a>\n" +
+                                    "                                                        </div>\n" +
+                                    "\n" +
+                                    "                                                        <div class=\"media-body\">\n" +
+                                    "                                                            <div>\n" +
+                                    "                                                                <h4 class=\"media-heading\">\n" +
+                                    "                                                                    <a href=\"#\" class=\"blue\">" + coachName + "</a>\n" +
+                                    "                                                                </h4>\n" +
+                                    "                                                            </div>\n" +
+                                    "                                                            <p>coachDegree: " + coachDegree + "\n" +
+                                    "                                                                playerDegree: " + playerDegree + "\n" +
+                                    "                                                                </p>\n" +
+                                    "\n" +
+                                    "                                                            <div class=\"search-actions text-center\">\n" +
+                                    "                                                                <span class=\"text-info\">$</span>\n" +
+                                    "\n" +
+                                    "                                                                <span class=\"blue bolder bigger-150\">300</span>\n" +
+                                    "\n" +
+                                    "                                                                hourly\n" +
+                                    "                                                                <div class=\"action-buttons bigger-125\">\n" +
+                                    "                                                                    <a href=\"#\">\n" +
+                                    "                                                                        <i class=\"ace-icon fa fa-phone green\"></i>\n" +
+                                    "                                                                    </a>\n" +
+                                    "\n" +
+                                    "                                                                    <a href=\"#\">\n" +
+                                    "                                                                        <i class=\"ace-icon fa fa-heart red\"></i>\n" +
+                                    "                                                                    </a>\n" +
+                                    "\n" +
+                                    "                                                                    <a href=\"#\">\n" +
+                                    "                                                                        <i class=\"ace-icon fa fa-star orange2\"></i>\n" +
+                                    "                                                                    </a>\n" +
+                                    "                                                                </div>\n" +
+                                    "                                                                <a class=\"search-btn-action btn btn-sm btn-block btn-info\">Book\n" +
+                                    "                                                                    it!</a>\n" +
+                                    "                                                            </div>\n" +
+                                    "                                                        </div>\n" +
+                                    "                                                    </div>\n"
+                        }
+                        console.log(data);
                     }
                 }
         );
     }
 
 
+</script>
+<script>
+    (function () {
+        var widget_id = 896924;
+        _shcp = [{widget_id: widget_id}];
+        var lang = (navigator.language || navigator.systemLanguage
+                || navigator.userLanguage || "en")
+                .substr(0, 2).toLowerCase();
+        var url = "widget.siteheart.com/widget/sh/" + widget_id + "/" + lang + "/widget.js";
+        var hcc = document.createElement("script");
+        hcc.type = "text/javascript";
+        hcc.async = true;
+        hcc.src = ("https:" == document.location.protocol ? "https" : "http")
+                + "://" + url;
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hcc, s.nextSibling);
+    })();
 </script>
 
 </body>

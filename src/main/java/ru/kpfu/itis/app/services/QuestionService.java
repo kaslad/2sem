@@ -12,6 +12,8 @@ public interface QuestionService {
 
     List<Question> findAllByAuthor(Client author);
 
+    List<Question> findAllByCoach(Coach coach);
+
     List<Question> findAll();
 
     Question addQuestion(String content, Client client);

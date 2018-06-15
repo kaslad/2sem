@@ -30,6 +30,13 @@ public class QuestionServiceImpl implements QuestionService {
         return ret;
     }
 
+    @Override
+    public List<Question> findAllByCoach(Coach coach) {
+        List<Question> ret = questionRepository.findAllByCoach(coach);
+        sortByDate(ret, true);
+        return ret;
+    }
+
     private void sortByDate(List<Question> ret, boolean inv) {
         Collections.sort(ret, Comparator.comparing(Question::getDate));
         if (inv) Collections.reverse(ret);

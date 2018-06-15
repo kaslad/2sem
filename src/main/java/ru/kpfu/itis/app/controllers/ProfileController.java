@@ -57,10 +57,11 @@ public class ProfileController {
     @GetMapping("/stringer/profile")
     public String getStringerProfile(@ModelAttribute("model")ModelMap model, Authentication authentication){
         User user = authenticationService.getUserByAuthentication(authentication);
+
         Stringer stringer = stringerService.findOneByUser(authenticationService.getUserByAuthentication(authentication));
         model.addAttribute("stringer", stringer);
         model.addAttribute("user", user);
-        return "profile";
+        return "stringer_profile";
 
     }
 
@@ -128,6 +129,7 @@ public class ProfileController {
             attributes.addFlashAttribute("error", errors.getAllErrors().get(0).getDefaultMessage());
             return "redirect:/stringer/profile";
         }
+        System.out.println("in edit Stringer profile");
         User user = authenticationService.getUserByAuthentication(authentication);
 
         userService.updateInfo(userEditForm, user);
@@ -161,7 +163,7 @@ public class ProfileController {
         Coach coach = coachService.getDataByUser(authenticationService.getUserByAuthentication(authentication)).get();
         model.addAttribute("coach", coach);
         model.addAttribute("user", user);
-        return "profile";
+        return "coach_profile";
     }
 
    /* @PostMapping("/manager/profile")

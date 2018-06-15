@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAll() {
-        return null;
+        return usersRepository.findAll();
     }
 
     @Override
@@ -30,12 +30,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getById(Long id) {
-        return usersRepository.findOne(id);
+        return usersRepository.findById(id).get();
     }
 
     @Override
     public void delete(Long id) {
 
+    }
+
+    @Override
+    public User findOneByEmail(String email) {
+        return usersRepository.findOneByEmail(email).get();
+    }
+
+    @Override
+    public List<User> findAllByNameContaining(String name) {
+        return usersRepository.findAllByNameContaining(name);
     }
 
     @Override

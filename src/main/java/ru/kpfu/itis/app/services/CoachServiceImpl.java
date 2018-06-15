@@ -29,9 +29,12 @@ public class CoachServiceImpl implements CoachService {
 
     @Override
     public void updateInfo(UserEditForm userEditForm, Coach coach) {
-        coach.setPlayerDegree(PlayerDegree.valueOf(userEditForm.getPlayerDegree()));
-        coach.setCoachDegree(CoachDegree.valueOf(userEditForm.getCoachDegree()));
-        coach.setPrice(Integer.parseInt(userEditForm.getPrice()));
+        String st = userEditForm.getPlayerDegree().replaceAll("\\s+", "");
+        coach.setPlayerDegree(PlayerDegree.valueOf(st));
+        st = userEditForm.getCoachDegree().replaceAll("\\s+", "");
+        coach.setCoachDegree(CoachDegree.valueOf(st));
+        st = userEditForm.getPrice().replaceAll("\\s+", "");;
+        coach.setPrice(Integer.parseInt(st));
         coachRepository.save(coach);
     }
 

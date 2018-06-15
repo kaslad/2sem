@@ -32,7 +32,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                 .login(userForm.getLogin())
                 .email(userForm .getEmail())
                 .hashPassword(passwordEncoder.encode(userForm.getPassword()))
-                .role(Role.fromString("COACH"))
+                .role(Role.fromString("CLIENT"))
                 .build();
         usersRepository.save(newUser);
         if (newUser.getRole() == Role.CLIENT) {

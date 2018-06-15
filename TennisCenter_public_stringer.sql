@@ -1,0 +1,3 @@
+INSERT INTO public.stringer (id, price, user_id) VALUES (2, '0', 6);
+INSERT INTO public.stringer (id, price, user_id) VALUES (3, '0', 8);
+INSERT INTO public.stringer (id, price, user_id) VALUES (1, '10                                                                                                                                                                                                       ', 5);
